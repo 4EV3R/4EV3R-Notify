@@ -1,0 +1,213 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+#notification-container {
+  position: fixed;
+  top: 35%;
+  right: 20px;
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 9999;
+}
+
+.notification {
+  background-color: #333;
+  color: #fff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  transform: translateX(300px);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  border-left: 5px solid;
+}
+
+.notification-content {
+  flex-grow: 1;
+}
+
+.notification-content strong {
+  font-size: 16px;
+  display: block;
+}
+
+.notification-content p {
+  font-size: 12px;
+  margin: 5px 0 0;
+}
+
+.notification.success {
+  border-left-color: #4CAF50;
+}
+
+.notification.error {
+  border-left-color: #f44336;
+}
+
+.notification.info {
+  border-left-color: #2196F3;
+}
+
+.notification.warning {
+  border-left-color: #FF9800;
+}
+
+.progress-bar {
+  background-color: #e0e0e0;
+  border-radius: 5px;
+  overflow: hidden;
+  height: 6px;
+  margin-top: 10px;
+}
+
+.progress-bar-inner {
+  background-color: #4CAF50;
+  height: 100%;
+  width: 0;
+  transition: width 0.1s linear;
+}
+
+.notification-icon {
+  width: 30px;
+  height: 30px;
+  background-size: cover;
+}
+
+.notification-icon.success {
+  background-image: url('success-icon.png');
+}
+
+.notification-icon.error {
+  background-image: url('error-icon.png');
+}
+
+.notification-icon.info {
+  background-image: url('info-icon.png');
+}
+
+.notification-icon.warning {
+  background-image: url('warning-icon.png');
+}
+
+/* Progress Bar */
+#circular-progress-container {
+  position: fixed;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10000;
+}
+
+#circular-dots {
+  display: flex;
+  gap: 5px;
+}
+
+.circular-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #ccc;
+}
+
+.circular-dot.active {
+  background-color: #5d4ee4;
+}
+
+#loading-text {
+  margin-top: 5px;
+  color: #4aa5cf;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+#progress-percentage {
+  color: #4aa5cf;
+}
+
+
+
+
+
+
+/* Button Selection Section */
+.selection-container {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 300px;
+  gap: 20px;
+  text-align: center;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  justify-content: center;
+}
+
+.option-label {
+  display: block;
+  background-color: #f1f1f1;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  text-align: center;
+  font-weight: 500;
+}
+
+.option input[type="radio"] {
+  display: none;
+}
+
+.option input[type="radio"]:checked + .option-label {
+  background-color: #007bff;
+  color: white;
+}
+
+#confirm-btn {
+  padding: 10px 20px;
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: not-allowed;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  text-align: center;
+}
+
+#confirm-btn:enabled {
+  background-color: #28a745;
+  cursor: pointer;
+}
+
+#confirm-btn:enabled:hover {
+  background-color: #218838;
+}

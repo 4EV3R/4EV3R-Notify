@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4EV3R-Notify</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="notification-container"></div>
+
+    <div id="circular-progress-container">
+        <div id="circular-dots"></div>
+        <div id="loading-text">
+            LOADING <span id="progress-percentage">0%</span>
+        </div>
+    </div>
+
+    <!-- Button Selection Section -->
+    <div class="selection-container" id="button-selection" style="display: none;">
+        <div class="option">
+            <input type="radio" name="radio" value="front-end" id="frontend-option">
+            <label for="frontend-option" class="option-label">Front-end</label>
+        </div>
+        <div class="option">
+            <input type="radio" name="radio" value="back-end" id="backend-option">
+            <label for="backend-option" class="option-label">Back-end</label>
+        </div>
+        <button id="confirm-btn" disabled>Confirm</button>
+    </div>
+
+
+
+    <script src="script.js"></script>
+</body>
+</html>
