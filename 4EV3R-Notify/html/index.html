@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>4EV3R-Notify</title>
+    <title>4EV3R-Notify | 4EV3R Scripts</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,20 +16,21 @@
         </div>
     </div>
 
-    <!-- Button Selection Section -->
     <div class="selection-container" id="button-selection" style="display: none;">
-        <div class="option">
-            <input type="radio" name="radio" value="front-end" id="frontend-option">
-            <label for="frontend-option" class="option-label">Front-end</label>
+        <div class="button-group">
+            <div class="option">
+                <input type="radio" name="radio" value="front-end" id="frontend-option">
+                <label for="frontend-option" class="styled-button">NO TEXT</label>
+            </div>
+            <div class="option">
+                <input type="radio" name="radio" value="back-end" id="backend-option">
+                <label for="backend-option" class="styled-button">NO TEXT</label>
+            </div>
         </div>
-        <div class="option">
-            <input type="radio" name="radio" value="back-end" id="backend-option">
-            <label for="backend-option" class="option-label">Back-end</label>
-        </div>
-        <button id="confirm-btn" disabled>Confirm</button>
+        <button id="confirm-btn" class="styled-button confirm" disabled>Confirm</button>
     </div>
-
-
+    <audio id="notifySound" src="sound/notify.mp3"></audio>
+    <audio id="buttonSound" src="sound/button-sound.mp3"></audio>
 
     <script src="script.js"></script>
 </body>

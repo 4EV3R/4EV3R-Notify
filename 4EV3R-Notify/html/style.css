@@ -10,12 +10,12 @@ body {
 
 #notification-container {
   position: fixed;
-  top: 35%;
+  top: 25%;
   right: 20px;
   width: 300px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 7px;
   z-index: 9999;
 }
 
@@ -60,17 +60,27 @@ body {
 .notification.info {
   border-left-color: #2196F3;
 }
-
-.notification.warning {
-  border-left-color: #FF9800;
+.notification:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.1) 75%, transparent 75%, transparent);
+  background-size: 200% 200%;
+  z-index: 0;
+  border-radius: 12px;
+  transition: background-position 0.5s ease;
 }
 
 .progress-bar {
   background-color: #e0e0e0;
-  border-radius: 5px;
+  border-radius: 10px;
   overflow: hidden;
-  height: 6px;
+  height: 10px;
   margin-top: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .progress-bar-inner {
@@ -78,6 +88,7 @@ body {
   height: 100%;
   width: 0;
   transition: width 0.1s linear;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .notification-icon {
@@ -87,22 +98,17 @@ body {
 }
 
 .notification-icon.success {
-  background-image: url('success-icon.png');
+  background-image: url('img/success-icon.png');
 }
 
 .notification-icon.error {
-  background-image: url('error-icon.png');
+  background-image: url('img/error-icon.png');
 }
 
 .notification-icon.info {
-  background-image: url('info-icon.png');
+  background-image: url('img/info-icon.png');
 }
 
-.notification-icon.warning {
-  background-image: url('warning-icon.png');
-}
-
-/* Progress Bar */
 #circular-progress-container {
   position: fixed;
   bottom: 10px;
@@ -112,6 +118,11 @@ body {
   flex-direction: column;
   align-items: center;
   z-index: 10000;
+  padding: 10px;
+  border-radius: 12px;
+  background-color: #4f4f50;
+  border: 2px solid #aaa;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 #circular-dots {
@@ -120,94 +131,134 @@ body {
 }
 
 .circular-dot {
-  width: 10px;
-  height: 10px;
+  width: 15px;
+  height: 15px;
   border-radius: 50%;
   background-color: #ccc;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.circular-dot:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.1) 75%, transparent 75%, transparent);
+  background-size: 200% 200%;
+  border-radius: 50%;
+  transition: background-position 0.5s ease;
 }
 
 .circular-dot.active {
   background-color: #5d4ee4;
 }
 
+.circular-dot.active:before {
+  background-position: 100% 0;
+}
+
 #loading-text {
   margin-top: 5px;
-  color: #4aa5cf;
+  color: #fff;
   font-size: 14px;
   font-weight: bold;
 }
 
 #progress-percentage {
-  color: #4aa5cf;
+  color: #fff;
 }
 
-
-
-
-
-
-/* Button Selection Section */
 .selection-container {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 300px;
+  position: absolute;
+  bottom: 50px;
+  width: 100%;
   gap: 20px;
   text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
-.option {
+.selection-container.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.button-group {
   display: flex;
-  align-items: center;
-  gap: 10px;
-  width: 100%;
+  gap: 20px;
   justify-content: center;
-}
-
-.option-label {
-  display: block;
-  background-color: #f1f1f1;
-  padding: 15px;
-  border-radius: 8px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
   width: 100%;
-  text-align: center;
-  font-weight: 500;
+  margin-bottom: 20px;
 }
 
 .option input[type="radio"] {
   display: none;
 }
 
-.option input[type="radio"]:checked + .option-label {
-  background-color: #007bff;
+.styled-button {
+  display: inline-block;
+  padding: 15px 30px;
+  background-color: #6a4cff;
+  color: white;
+  border: 2px solid #6a4cff;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, box-shadow 0.3s;
+  position: relative;
+}
+
+.styled-button:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.1) 50%, rgba(255, 255, 255, 0.1) 75%, transparent 75%, transparent);
+  background-size: 200% 200%;
+  z-index: 0;
+  border-radius: 12px;
+  transition: background-position 0.5s ease;
+}
+
+.styled-button:hover {
+  background-color: #5a3de6;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.styled-button:active {
+  background-color: #4a32bf;
+}
+
+.styled-button:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
+.option input[type="radio"]:checked + .styled-button {
+  background-color: #4a32bf;
+  border-color: #4a32bf;
   color: white;
 }
 
 #confirm-btn {
+  width: 150px;
   padding: 10px 20px;
-  background-color: #6c757d;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: not-allowed;
-  transition: background-color 0.3s ease;
-  width: 100%;
-  text-align: center;
 }
 
-#confirm-btn:enabled {
-  background-color: #28a745;
-  cursor: pointer;
-}
-
-#confirm-btn:enabled:hover {
-  background-color: #218838;
+.styled-button:hover:before {
+  background-position: 100% 0;
 }
